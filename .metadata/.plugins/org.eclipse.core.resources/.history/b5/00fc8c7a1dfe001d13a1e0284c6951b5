@@ -1,0 +1,16 @@
+package com.test.mapper;
+
+
+import org.apache.ibatis.annotations.Mapper;
+
+import com.test.entity.MemberDto;
+
+@Mapper
+public interface MemberMapper {
+
+	void insertMember(MemberDto member);
+    MemberDto getMemberById(int id);
+    void updateMember(MemberDto member);
+    void deleteMember(int id);
+   
+}

@@ -1,0 +1,15 @@
+package com.test.mapper;
+
+import org.springframework.stereotype.Repository;
+
+import com.test.entity.MemberDto;
+
+@Repository
+public interface MemberMapper {
+
+	
+	void insertMember(MemberDto member);
+    MemberDto getMemberById(int id);
+    void updateMember(MemberDto member);
+    void deleteMember(int id);
+}

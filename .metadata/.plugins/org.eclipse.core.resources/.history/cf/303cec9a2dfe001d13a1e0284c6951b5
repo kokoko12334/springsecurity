@@ -1,0 +1,35 @@
+package com.test.Service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.test.entity.MemberDto;
+import com.test.mapper.MemberMapper;
+
+@Service
+public class LoginService {
+
+	@Autowired
+	MemberMapper mapper;
+	
+	
+	public boolean loginCheck(String mail, String pwd) {
+		boolean result = false;
+		
+		MemberDto member =  mapper.getMemberByMail(mail);		
+		String changedPwd = mapper.changePwd(pwd);
+		
+		System.out.println(member.getPwd());
+		System.out.println(changedPwd);
+		
+		if(changedPwd.equals(member.getPwd())) {
+			result = true;
+		}
+		
+		return result;
+	}
+	
+	
+	
+	
+}

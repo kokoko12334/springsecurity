@@ -1,0 +1,11 @@
+package com;
+
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+
+// password는 콘솔창에 있고 id는 user이다.
+@Configuration
+@EnableWebSecurity
+public class AuthenticationConfig {
+
+}

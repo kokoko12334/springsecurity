@@ -1,0 +1,29 @@
+package com.test.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.test.Service.LoginService;
+
+@RestController
+public class LoginController {
+
+	@Autowired
+	LoginService logsvc;
+
+	@PostMapping("/login")
+	public String login(@RequestParam("mail") String mail, @RequestParam("pwd") String pwd) {
+		String result = logsvc.loginCheck(mail, pwd);
+
+		if (result.equals("0")) {
+			return "redirect:/";
+		} else
+			return result;
+
+	}
+
+}

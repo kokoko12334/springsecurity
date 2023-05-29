@@ -1,0 +1,26 @@
+package com.test.mapper;
+
+import org.apache.ibatis.annotations.Delete;
+import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
+import org.springframework.stereotype.Repository;
+
+import com.test.entity.MemberDto;
+
+@Repository
+public interface MemberMapper {
+
+	@Insert("INSERT INTO 회원정보 (mail,name, pwd, birth, phone) VALUES (#{mail},#{name}, #{pwd}, #{birth}, #{phone})")
+    void insertMember(MemberDto member);
+
+    @Select("SELECT * FROM 회원정보 WHERE id = #{id}")
+    MemberDto getMemberById(int id);
+
+    @Update("UPDATE 회원정보 SET mail = #{mail} name = #{name}, pwd = #{pwd}, birth = #{birth}, phone = #{phone} WHERE id = #{id}")
+    void updateMember(MemberDto member);
+
+    @Delete("DELETE FROM 회원정보 WHERE id = #{id}")
+    void deleteMember(int id);
+   
+}

@@ -1,0 +1,20 @@
+package com.test.Service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.test.mapper.MemberMapper;
+
+@Service
+public class LoginService {
+
+	@Autowired
+	MemberMapper mapper;
+	
+	
+	
+	
+	
+	
+	
+}

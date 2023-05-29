@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.test.mapper.MemberMapper">
+    <resultMap id="memberResultMap" type="com.test.entity.MemberDto">
+        <id property="id" column="id"/>
+        <result property="mail" column="mail"/>
+        <result property="name" column="name"/>
+        <result property="pwd" column="pwd"/>
+        <result property="birth" column="birth"/>
+        <result property="phone" column="phone"/>
+        <result property="reg" column="reg"/>
+        
+    </resultMap>
+
+    <insert id="insertMember" parameterType="com.test.entity.MemberDto">
+        INSERT INTO members (mail,name, pwd, birth, phone)
+        VALUES (#{mail}, #{name}, #{pwd}, #{birth}, #{phone})
+    </insert>
+
+    <select id="getMemberById" resultMap="memberResultMap" parameterType="int">
+        SELECT * FROM 회원정보
+        WHERE id = #{id}
+    </select>
+
+
+    <update id="updateMember" parameterType="com.test.entity.MemberDto">
+        UPDATE members
+        SET name = #{name}, pwd = #{pwd}, birth = #{birth}, phone = #{phone}, email = #{email}
+        WHERE id = #{id}
+    </update>
+
+    <delete id="deleteMember" parameterType="int">
+        DELETE FROM members
+        WHERE id = #{id}
+    </delete>
+</mapper>

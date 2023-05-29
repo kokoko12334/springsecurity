@@ -1,0 +1,54 @@
+package com.test.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.test.entity.MemberDto;
+import com.test.mapper.MemberMapper;
+
+
+@Controller
+public class TestController {
+
+	@Autowired
+	MemberMapper mapper;
+
+	@GetMapping("/")
+	public String home() {
+		return "home";
+	}
+	
+	@GetMapping("/joinForm")
+	public String join() {
+		return "joinForm";
+	}
+	
+	
+	
+	@PostMapping("/regist")
+	public String regist(@RequestParam("name") String name, 
+			@RequestParam("pwd") String pwd,
+			@RequestParam("mail") String mail, 
+			@RequestParam("birth") String birth, 
+			@RequestParam("phone") String Phone) {
+		
+		MemberDto member = new MemberDto();
+		member.setMail(mail);
+		member.setName(name);
+		member.setPhone(Phone);
+		member.setPwd(pwd);
+		member.setBirth(birth);
+		System.out.println(member.toString());
+		
+		
+		
+		return "home";
+	}
+	
+	
+	
+	
+}

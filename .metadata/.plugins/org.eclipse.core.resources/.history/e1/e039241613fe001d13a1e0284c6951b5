@@ -1,0 +1,13 @@
+package com.test.mapper;
+
+import com.test.entity.MemberDto;
+
+
+public interface MemberMapper {
+
+	
+	void insertMember(MemberDto member);
+    MemberDto getMemberById(int id);
+    void updateMember(MemberDto member);
+    void deleteMember(int id);
+}
